@@ -18,4 +18,6 @@ public interface TbUserMapper {
     int updateByPrimaryKeySelective(TbUser record);
 
     int updateByPrimaryKey(TbUser record);
+
+    TbUser loginWithPass(String userno, String password);
 }

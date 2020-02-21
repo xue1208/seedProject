@@ -8,11 +8,11 @@ spring:
 #    prefix: classpath:/templates/files/
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://101.200.125.114:3306/zzh?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
-      userName: root
-    password: wanan650711
+    url: jdbc:mysql://47.95.212.214:3306/seedProject?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    userName: zhangxue
+    password: zx981208
 mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml
-  type-aliases-package: com.zyf.graduation.gkwbserver.bean.model
+  type-aliases-package: com.seed.seed_manage.bean
 
 
