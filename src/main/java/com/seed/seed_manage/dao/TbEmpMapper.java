@@ -2,6 +2,7 @@ package com.seed.seed_manage.dao;
 
 import com.seed.seed_manage.bean.TbEmp;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -18,4 +19,6 @@ public interface TbEmpMapper {
     int updateByPrimaryKeySelective(TbEmp record);
 
     int updateByPrimaryKey(TbEmp record);
+
+    TbEmp get(@Param("empno") String empn,@Param("password") String password);
 }

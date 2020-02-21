@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @Mapper
 public interface TbUserMapper {
@@ -21,4 +23,6 @@ public interface TbUserMapper {
     int updateByPrimaryKey(TbUser record);
 
     TbUser loginWithPass(@Param("userName") String userName, @Param("password") String password);
+
+    List <TbUser> getAll();
 }
