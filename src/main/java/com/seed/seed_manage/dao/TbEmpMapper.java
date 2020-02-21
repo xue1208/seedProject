@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @Mapper
 public interface TbEmpMapper {
@@ -21,4 +23,6 @@ public interface TbEmpMapper {
     int updateByPrimaryKey(TbEmp record);
 
     TbEmp get(@Param("empno") String empn,@Param("password") String password);
+
+    List<TbEmp> getAll();
 }

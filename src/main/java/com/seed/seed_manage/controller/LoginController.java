@@ -38,6 +38,7 @@ public class LoginController {
          ModelAndView modelAndView;
          return "index";
         }
+
         return "";
     }
 
