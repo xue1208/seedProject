@@ -9,16 +9,23 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Service
-public class SendMessage {
-    @Autowired
-    TbEmp tbEmp;
+public class SendMessageService {
+
     @Autowired
     TbEmpMapper tbEmpMapper ;
-    @Autowired
-    HttpSession session;
-    public List<TbEmp> getAllemp()
+
+
+    public List<TbEmp> getAllemp(HttpSession session )
     {
+        TbEmp tbEmp;
         List<TbEmp> list = tbEmpMapper.getAll();
-        list.remove(session.getAttribute("empno"));
+        String password = (String) session.getAttribute("password");
+        String empno = (String) session.getAttribute("empno");
+        TbEmp emp = tbEmpMapper.get(empno,password);
+        int id = emp.getEmpid();
+        list.remove(id);
+        return  list;
+
     }
+
 }

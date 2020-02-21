@@ -22,7 +22,7 @@ public interface TbEmpMapper {
 
     int updateByPrimaryKey(TbEmp record);
 
-    TbEmp get(@Param("empno") String empn,@Param("password") String password);
+    TbEmp get(@Param("empno") String empno,@Param("password") String password);
 
     List<TbEmp> getAll();
 }

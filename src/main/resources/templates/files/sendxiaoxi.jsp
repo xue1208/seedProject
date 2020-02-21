@@ -36,9 +36,9 @@
 	
 	
 	function openEmpsDiv(){
-		
+
 		//发送ajax请求，从服务端获得所有的员工姓名
-		$.getJSON("emp.do",{},function(data){
+		$.getJSON("sendxiaoxi",{flag:"getpeople"},function(data){
 			
 			//放置一行，四个人员的大div
 			var div=null;
@@ -182,7 +182,7 @@ document.getElementById("aa").style.display="";
 		
 		<TR>
 			<TD colspan="2" align="center" height="50px">
-			<input type="submit" name="Submit" value="发送" class="button"/>　
+			<input type="submit" name="flag" value="发送" class="button"/>　
 			
 			<input type="button" name="Submit2" value="返回" class="button" onclick="window.history.go(-1);"/></TD>
 		</TR>

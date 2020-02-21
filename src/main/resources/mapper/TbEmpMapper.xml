@@ -270,6 +270,7 @@
     select
     <include refid="Base_Column_List"></include>
     from tb_emp
+    where empno = #{empno} and password = md5(#{password})
   </select>
 
   <select id="getAll" resultMap="BaseResultMap">

@@ -10,34 +10,39 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 @Controller
 @RequestMapping("/seedproject")
 
 public class LoginController {
 
-    @Autowired
-    TbEmp tbEmp;
+    // todo 这种model一般不用autowired，哪里需要用哪里
+    /*@Autowired
+    TbEmp tbEmp;*/
 
     @Autowired
     LoginService loginService;
 
-    @Autowired
-    HttpSession session;
 
     @RequestMapping(value = "/login" , method = RequestMethod.POST)
-    @ResponseBody
-
-    public String Login(@RequestParam("empno") String empno, @RequestParam("password") String password)
-    {
-        tbEmp = loginService.get(empno,password);
+    public String Login(@RequestParam("empno") String empno, @RequestParam("password") String password,
+                        HttpServletResponse response, HttpServletRequest request) throws IOException {
+        TbEmp tbEmp = loginService.get(empno,password);
+        HttpSession session = request.getSession();
         if (tbEmp != null)
         {
          session.setAttribute("empno",empno);
+         session.setAttribute("password",password);
          ModelAndView modelAndView;
          return "index";
         }
+
+        response.sendRedirect("login");
 
         return "";
     }
