@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seed.seed_manage.dao.TbEmpMapper">
+  <resultMap id="BaseResultMap" type="com.seed.seed_manage.bean.TbEmp">
+    <id column="EMPID" jdbcType="INTEGER" property="empid" />
+    <result column="ROLEID" jdbcType="INTEGER" property="roleid" />
+    <result column="DUTYID" jdbcType="INTEGER" property="dutyid" />
+    <result column="EMPNO" jdbcType="VARCHAR" property="empno" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="EMPNAME" jdbcType="VARCHAR" property="empname" />
+    <result column="SEX" jdbcType="VARCHAR" property="sex" />
+    <result column="BIRTH" jdbcType="DATE" property="birth" />
+    <result column="IDCARD" jdbcType="VARCHAR" property="idcard" />
+    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="TEL" jdbcType="VARCHAR" property="tel" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="EMPTYPE" jdbcType="VARCHAR" property="emptype" />
+    <result column="BANKNAME" jdbcType="VARCHAR" property="bankname" />
+    <result column="BANKNO" jdbcType="VARCHAR" property="bankno" />
+    <result column="SAL" jdbcType="INTEGER" property="sal" />
+    <result column="COMM" jdbcType="INTEGER" property="comm" />
+    <result column="SUBSIDY" jdbcType="INTEGER" property="subsidy" />
+    <result column="HIREDATE" jdbcType="DATE" property="hiredate" />
+    <result column="DESCRIPT" jdbcType="VARCHAR" property="descript" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    EMPID, ROLEID, DUTYID, EMPNO, PASSWORD, EMPNAME, SEX, BIRTH, IDCARD, EMAIL, TEL, 
+    ADDRESS, EMPTYPE, BANKNAME, BANKNO, SAL, COMM, SUBSIDY, HIREDATE, DESCRIPT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_emp
+    where EMPID = #{empid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_emp
+    where EMPID = #{empid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.seed.seed_manage.bean.TbEmp">
+    insert into tb_emp (EMPID, ROLEID, DUTYID, 
+      EMPNO, PASSWORD, EMPNAME, 
+      SEX, BIRTH, IDCARD, EMAIL, 
+      TEL, ADDRESS, EMPTYPE, 
+      BANKNAME, BANKNO, SAL, 
+      COMM, SUBSIDY, HIREDATE, 
+      DESCRIPT)
+    values (#{empid,jdbcType=INTEGER}, #{roleid,jdbcType=INTEGER}, #{dutyid,jdbcType=INTEGER}, 
+      #{empno,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{empname,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{birth,jdbcType=DATE}, #{idcard,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{tel,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{emptype,jdbcType=VARCHAR}, 
+      #{bankname,jdbcType=VARCHAR}, #{bankno,jdbcType=VARCHAR}, #{sal,jdbcType=INTEGER}, 
+      #{comm,jdbcType=INTEGER}, #{subsidy,jdbcType=INTEGER}, #{hiredate,jdbcType=DATE}, 
+      #{descript,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.seed.seed_manage.bean.TbEmp">
+    insert into tb_emp
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="empid != null">
+        EMPID,
+      </if>
+      <if test="roleid != null">
+        ROLEID,
+      </if>
+      <if test="dutyid != null">
+        DUTYID,
+      </if>
+      <if test="empno != null">
+        EMPNO,
+      </if>
+      <if test="password != null">
+        PASSWORD,
+      </if>
+      <if test="empname != null">
+        EMPNAME,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="birth != null">
+        BIRTH,
+      </if>
+      <if test="idcard != null">
+        IDCARD,
+      </if>
+      <if test="email != null">
+        EMAIL,
+      </if>
+      <if test="tel != null">
+        TEL,
+      </if>
+      <if test="address != null">
+        ADDRESS,
+      </if>
+      <if test="emptype != null">
+        EMPTYPE,
+      </if>
+      <if test="bankname != null">
+        BANKNAME,
+      </if>
+      <if test="bankno != null">
+        BANKNO,
+      </if>
+      <if test="sal != null">
+        SAL,
+      </if>
+      <if test="comm != null">
+        COMM,
+      </if>
+      <if test="subsidy != null">
+        SUBSIDY,
+      </if>
+      <if test="hiredate != null">
+        HIREDATE,
+      </if>
+      <if test="descript != null">
+        DESCRIPT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="empid != null">
+        #{empid,jdbcType=INTEGER},
+      </if>
+      <if test="roleid != null">
+        #{roleid,jdbcType=INTEGER},
+      </if>
+      <if test="dutyid != null">
+        #{dutyid,jdbcType=INTEGER},
+      </if>
+      <if test="empno != null">
+        #{empno,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null">
+        #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birth != null">
+        #{birth,jdbcType=DATE},
+      </if>
+      <if test="idcard != null">
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="emptype != null">
+        #{emptype,jdbcType=VARCHAR},
+      </if>
+      <if test="bankname != null">
+        #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankno != null">
+        #{bankno,jdbcType=VARCHAR},
+      </if>
+      <if test="sal != null">
+        #{sal,jdbcType=INTEGER},
+      </if>
+      <if test="comm != null">
+        #{comm,jdbcType=INTEGER},
+      </if>
+      <if test="subsidy != null">
+        #{subsidy,jdbcType=INTEGER},
+      </if>
+      <if test="hiredate != null">
+        #{hiredate,jdbcType=DATE},
+      </if>
+      <if test="descript != null">
+        #{descript,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.seed.seed_manage.bean.TbEmp">
+    update tb_emp
+    <set>
+      <if test="roleid != null">
+        ROLEID = #{roleid,jdbcType=INTEGER},
+      </if>
+      <if test="dutyid != null">
+        DUTYID = #{dutyid,jdbcType=INTEGER},
+      </if>
+      <if test="empno != null">
+        EMPNO = #{empno,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null">
+        EMPNAME = #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        SEX = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birth != null">
+        BIRTH = #{birth,jdbcType=DATE},
+      </if>
+      <if test="idcard != null">
+        IDCARD = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        TEL = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="emptype != null">
+        EMPTYPE = #{emptype,jdbcType=VARCHAR},
+      </if>
+      <if test="bankname != null">
+        BANKNAME = #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankno != null">
+        BANKNO = #{bankno,jdbcType=VARCHAR},
+      </if>
+      <if test="sal != null">
+        SAL = #{sal,jdbcType=INTEGER},
+      </if>
+      <if test="comm != null">
+        COMM = #{comm,jdbcType=INTEGER},
+      </if>
+      <if test="subsidy != null">
+        SUBSIDY = #{subsidy,jdbcType=INTEGER},
+      </if>
+      <if test="hiredate != null">
+        HIREDATE = #{hiredate,jdbcType=DATE},
+      </if>
+      <if test="descript != null">
+        DESCRIPT = #{descript,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where EMPID = #{empid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.seed.seed_manage.bean.TbEmp">
+    update tb_emp
+    set ROLEID = #{roleid,jdbcType=INTEGER},
+      DUTYID = #{dutyid,jdbcType=INTEGER},
+      EMPNO = #{empno,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      EMPNAME = #{empname,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=VARCHAR},
+      BIRTH = #{birth,jdbcType=DATE},
+      IDCARD = #{idcard,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      TEL = #{tel,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      EMPTYPE = #{emptype,jdbcType=VARCHAR},
+      BANKNAME = #{bankname,jdbcType=VARCHAR},
+      BANKNO = #{bankno,jdbcType=VARCHAR},
+      SAL = #{sal,jdbcType=INTEGER},
+      COMM = #{comm,jdbcType=INTEGER},
+      SUBSIDY = #{subsidy,jdbcType=INTEGER},
+      HIREDATE = #{hiredate,jdbcType=DATE},
+      DESCRIPT = #{descript,jdbcType=VARCHAR}
+    where EMPID = #{empid,jdbcType=INTEGER}
+  </update>
+</mapper>

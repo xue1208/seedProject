@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seed.seed_manage.dao.ToSendmessageMapper">
+  <resultMap id="BaseResultMap" type="com.seed.seed_manage.bean.ToSendmessage">
+    <id column="SENDID" jdbcType="INTEGER" property="sendid" />
+    <result column="EMPID" jdbcType="INTEGER" property="empid" />
+    <result column="MESSAGETITLE" jdbcType="VARCHAR" property="messagetitle" />
+    <result column="MESSAGECONTENT" jdbcType="VARCHAR" property="messagecontent" />
+    <result column="CREATEDATE" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="PRIORITY" jdbcType="INTEGER" property="priority" />
+    <result column="MESSAGESTATE" jdbcType="INTEGER" property="messagestate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SENDID, EMPID, MESSAGETITLE, MESSAGECONTENT, CREATEDATE, PRIORITY, MESSAGESTATE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from to_sendmessage
+    where SENDID = #{sendid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from to_sendmessage
+    where SENDID = #{sendid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.seed.seed_manage.bean.ToSendmessage">
+    insert into to_sendmessage (SENDID, EMPID, MESSAGETITLE, 
+      MESSAGECONTENT, CREATEDATE, PRIORITY, 
+      MESSAGESTATE)
+    values (#{sendid,jdbcType=INTEGER}, #{empid,jdbcType=INTEGER}, #{messagetitle,jdbcType=VARCHAR}, 
+      #{messagecontent,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, #{priority,jdbcType=INTEGER}, 
+      #{messagestate,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.seed.seed_manage.bean.ToSendmessage">
+    insert into to_sendmessage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sendid != null">
+        SENDID,
+      </if>
+      <if test="empid != null">
+        EMPID,
+      </if>
+      <if test="messagetitle != null">
+        MESSAGETITLE,
+      </if>
+      <if test="messagecontent != null">
+        MESSAGECONTENT,
+      </if>
+      <if test="createdate != null">
+        CREATEDATE,
+      </if>
+      <if test="priority != null">
+        PRIORITY,
+      </if>
+      <if test="messagestate != null">
+        MESSAGESTATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sendid != null">
+        #{sendid,jdbcType=INTEGER},
+      </if>
+      <if test="empid != null">
+        #{empid,jdbcType=INTEGER},
+      </if>
+      <if test="messagetitle != null">
+        #{messagetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="messagecontent != null">
+        #{messagecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="priority != null">
+        #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="messagestate != null">
+        #{messagestate,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.seed.seed_manage.bean.ToSendmessage">
+    update to_sendmessage
+    <set>
+      <if test="empid != null">
+        EMPID = #{empid,jdbcType=INTEGER},
+      </if>
+      <if test="messagetitle != null">
+        MESSAGETITLE = #{messagetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="messagecontent != null">
+        MESSAGECONTENT = #{messagecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        CREATEDATE = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="priority != null">
+        PRIORITY = #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="messagestate != null">
+        MESSAGESTATE = #{messagestate,jdbcType=INTEGER},
+      </if>
+    </set>
+    where SENDID = #{sendid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.seed.seed_manage.bean.ToSendmessage">
+    update to_sendmessage
+    set EMPID = #{empid,jdbcType=INTEGER},
+      MESSAGETITLE = #{messagetitle,jdbcType=VARCHAR},
+      MESSAGECONTENT = #{messagecontent,jdbcType=VARCHAR},
+      CREATEDATE = #{createdate,jdbcType=TIMESTAMP},
+      PRIORITY = #{priority,jdbcType=INTEGER},
+      MESSAGESTATE = #{messagestate,jdbcType=INTEGER}
+    where SENDID = #{sendid,jdbcType=INTEGER}
+  </update>
+</mapper>

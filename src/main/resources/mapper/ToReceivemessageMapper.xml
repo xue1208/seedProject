@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seed.seed_manage.dao.ToReceivemessageMapper">
+  <resultMap id="BaseResultMap" type="com.seed.seed_manage.bean.ToReceivemessage">
+    <id column="RECEIVEID" jdbcType="INTEGER" property="receiveid" />
+    <result column="SENDID" jdbcType="INTEGER" property="sendid" />
+    <result column="EMPID" jdbcType="INTEGER" property="empid" />
+    <result column="MESSAGESTATE" jdbcType="INTEGER" property="messagestate" />
+    <result column="OPENDATE" jdbcType="TIMESTAMP" property="opendate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    RECEIVEID, SENDID, EMPID, MESSAGESTATE, OPENDATE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from to_receivemessage
+    where RECEIVEID = #{receiveid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from to_receivemessage
+    where RECEIVEID = #{receiveid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.seed.seed_manage.bean.ToReceivemessage">
+    insert into to_receivemessage (RECEIVEID, SENDID, EMPID, 
+      MESSAGESTATE, OPENDATE)
+    values (#{receiveid,jdbcType=INTEGER}, #{sendid,jdbcType=INTEGER}, #{empid,jdbcType=INTEGER}, 
+      #{messagestate,jdbcType=INTEGER}, #{opendate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.seed.seed_manage.bean.ToReceivemessage">
+    insert into to_receivemessage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="receiveid != null">
+        RECEIVEID,
+      </if>
+      <if test="sendid != null">
+        SENDID,
+      </if>
+      <if test="empid != null">
+        EMPID,
+      </if>
+      <if test="messagestate != null">
+        MESSAGESTATE,
+      </if>
+      <if test="opendate != null">
+        OPENDATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="receiveid != null">
+        #{receiveid,jdbcType=INTEGER},
+      </if>
+      <if test="sendid != null">
+        #{sendid,jdbcType=INTEGER},
+      </if>
+      <if test="empid != null">
+        #{empid,jdbcType=INTEGER},
+      </if>
+      <if test="messagestate != null">
+        #{messagestate,jdbcType=INTEGER},
+      </if>
+      <if test="opendate != null">
+        #{opendate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.seed.seed_manage.bean.ToReceivemessage">
+    update to_receivemessage
+    <set>
+      <if test="sendid != null">
+        SENDID = #{sendid,jdbcType=INTEGER},
+      </if>
+      <if test="empid != null">
+        EMPID = #{empid,jdbcType=INTEGER},
+      </if>
+      <if test="messagestate != null">
+        MESSAGESTATE = #{messagestate,jdbcType=INTEGER},
+      </if>
+      <if test="opendate != null">
+        OPENDATE = #{opendate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where RECEIVEID = #{receiveid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.seed.seed_manage.bean.ToReceivemessage">
+    update to_receivemessage
+    set SENDID = #{sendid,jdbcType=INTEGER},
+      EMPID = #{empid,jdbcType=INTEGER},
+      MESSAGESTATE = #{messagestate,jdbcType=INTEGER},
+      OPENDATE = #{opendate,jdbcType=TIMESTAMP}
+    where RECEIVEID = #{receiveid,jdbcType=INTEGER}
+  </update>
+</mapper>

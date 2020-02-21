@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seed.seed_manage.dao.TbDutyMapper">
+  <resultMap id="BaseResultMap" type="com.seed.seed_manage.bean.TbDuty">
+    <id column="DUTYID" jdbcType="INTEGER" property="dutyid" />
+    <result column="DUTYNAME" jdbcType="VARCHAR" property="dutyname" />
+    <result column="DESCRIPT" jdbcType="VARCHAR" property="descript" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    DUTYID, DUTYNAME, DESCRIPT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_duty
+    where DUTYID = #{dutyid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_duty
+    where DUTYID = #{dutyid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.seed.seed_manage.bean.TbDuty">
+    insert into tb_duty (DUTYID, DUTYNAME, DESCRIPT
+      )
+    values (#{dutyid,jdbcType=INTEGER}, #{dutyname,jdbcType=VARCHAR}, #{descript,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.seed.seed_manage.bean.TbDuty">
+    insert into tb_duty
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dutyid != null">
+        DUTYID,
+      </if>
+      <if test="dutyname != null">
+        DUTYNAME,
+      </if>
+      <if test="descript != null">
+        DESCRIPT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dutyid != null">
+        #{dutyid,jdbcType=INTEGER},
+      </if>
+      <if test="dutyname != null">
+        #{dutyname,jdbcType=VARCHAR},
+      </if>
+      <if test="descript != null">
+        #{descript,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.seed.seed_manage.bean.TbDuty">
+    update tb_duty
+    <set>
+      <if test="dutyname != null">
+        DUTYNAME = #{dutyname,jdbcType=VARCHAR},
+      </if>
+      <if test="descript != null">
+        DESCRIPT = #{descript,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DUTYID = #{dutyid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.seed.seed_manage.bean.TbDuty">
+    update tb_duty
+    set DUTYNAME = #{dutyname,jdbcType=VARCHAR},
+      DESCRIPT = #{descript,jdbcType=VARCHAR}
+    where DUTYID = #{dutyid,jdbcType=INTEGER}
+  </update>
+</mapper>

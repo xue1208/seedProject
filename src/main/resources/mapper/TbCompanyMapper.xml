@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seed.seed_manage.dao.TbCompanyMapper">
+  <resultMap id="BaseResultMap" type="com.seed.seed_manage.bean.TbCompany">
+    <id column="COMPANYID" jdbcType="INTEGER" property="companyid" />
+    <result column="COMPANYNAME" jdbcType="VARCHAR" property="companyname" />
+    <result column="LINKMAN" jdbcType="VARCHAR" property="linkman" />
+    <result column="TEL" jdbcType="VARCHAR" property="tel" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="CREATEDATE" jdbcType="DATE" property="createdate" />
+    <result column="DESCRIPT" jdbcType="VARCHAR" property="descript" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    COMPANYID, COMPANYNAME, LINKMAN, TEL, ADDRESS, CREATEDATE, DESCRIPT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_company
+    where COMPANYID = #{companyid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_company
+    where COMPANYID = #{companyid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.seed.seed_manage.bean.TbCompany">
+    insert into tb_company (COMPANYID, COMPANYNAME, LINKMAN, 
+      TEL, ADDRESS, CREATEDATE, 
+      DESCRIPT)
+    values (#{companyid,jdbcType=INTEGER}, #{companyname,jdbcType=VARCHAR}, #{linkman,jdbcType=VARCHAR}, 
+      #{tel,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{createdate,jdbcType=DATE}, 
+      #{descript,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.seed.seed_manage.bean.TbCompany">
+    insert into tb_company
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="companyid != null">
+        COMPANYID,
+      </if>
+      <if test="companyname != null">
+        COMPANYNAME,
+      </if>
+      <if test="linkman != null">
+        LINKMAN,
+      </if>
+      <if test="tel != null">
+        TEL,
+      </if>
+      <if test="address != null">
+        ADDRESS,
+      </if>
+      <if test="createdate != null">
+        CREATEDATE,
+      </if>
+      <if test="descript != null">
+        DESCRIPT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="companyid != null">
+        #{companyid,jdbcType=INTEGER},
+      </if>
+      <if test="companyname != null">
+        #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null">
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=DATE},
+      </if>
+      <if test="descript != null">
+        #{descript,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.seed.seed_manage.bean.TbCompany">
+    update tb_company
+    <set>
+      <if test="companyname != null">
+        COMPANYNAME = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null">
+        LINKMAN = #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        TEL = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        CREATEDATE = #{createdate,jdbcType=DATE},
+      </if>
+      <if test="descript != null">
+        DESCRIPT = #{descript,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where COMPANYID = #{companyid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.seed.seed_manage.bean.TbCompany">
+    update tb_company
+    set COMPANYNAME = #{companyname,jdbcType=VARCHAR},
+      LINKMAN = #{linkman,jdbcType=VARCHAR},
+      TEL = #{tel,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      CREATEDATE = #{createdate,jdbcType=DATE},
+      DESCRIPT = #{descript,jdbcType=VARCHAR}
+    where COMPANYID = #{companyid,jdbcType=INTEGER}
+  </update>
+</mapper>
