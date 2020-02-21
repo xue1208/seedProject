@@ -20,14 +20,12 @@ public class UserService {
     @Autowired
     TbUserMapper tbUserMapper;
 
-
-
     @Autowired
     TbEmpMapper tbEmpMapper;
 
     public Map<String, Object> login(String userName, String userPassword) {
         Map<String, Object> map = new HashMap<>();
-        TbUser tbUser = tbUserMapper.selectByPrimaryKey(1212);
+        TbUser tbUser = tbUserMapper.loginWithPass(userName, userPassword);
         //tbEmpMapper.deleteByPrimaryKey(12346);
         map.put("tbUser", tbUser);
         return map;

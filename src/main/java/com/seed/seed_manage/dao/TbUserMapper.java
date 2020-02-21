@@ -2,6 +2,7 @@ package com.seed.seed_manage.dao;
 
 import com.seed.seed_manage.bean.TbUser;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -19,5 +20,5 @@ public interface TbUserMapper {
 
     int updateByPrimaryKey(TbUser record);
 
-    TbUser loginWithPass(String userno, String password);
+    TbUser loginWithPass(@Param("userName") String userName, @Param("password") String password);
 }

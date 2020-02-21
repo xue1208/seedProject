@@ -115,10 +115,10 @@
     where userno = #{userno,jdbcType=INTEGER}
   </update>
 
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="loginWithPass" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from tb_user
-    where userno = #{userno,jdbcType=INTEGER}
+    where userName = #{userName} and password = md5(#{password})
   </select>
 </mapper>
